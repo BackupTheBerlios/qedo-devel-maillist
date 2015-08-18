@@ -1,0 +1,46 @@
+From victor_cionca at yahoo.com  Fri May 11 12:16:38 2007
+From: victor_cionca at yahoo.com (victor cionca)
+Date: Fri, 11 May 2007 03:16:38 -0700 (PDT)
+Subject: [Qedo-devel] QoSEnabler
+Message-ID: <545382.85944.qm@web33614.mail.mud.yahoo.com>
+
+Hello!
+
+I would like to use the QoSEnabler as a monitor in the
+container. To monitor outside events and communicate
+with the other components via QoSUsage or callbacks.
+
+The QoSEnabler supports a "getSystemLoad" interface. 
+
+This is how I install the enabler as a service:
+context_->install_service_reference("QoSMonitor",
+component_);
+
+And this is how I call it from the component:
+ - I include QoSEnabler_component_EQUIVALENT.h and do:
+
+CORBA::Object_var qosmonitor =
+context_->resolve_service_reference("QoSMonitor");
+			QoSEnabler::SystemLoadMonitor_var monitor =
+QoSEnabler::SystemLoadMonitor::_narrow(qosmonitor);
+
+double system_load = monitor->getSystemLoad();
+
+
+It compiles ok but the method call from the component
+fails somehow...
+
+Also, I would like to know I could use the callback
+way to interact with the component from the
+QoSEnabler.
+
+Thank you!
+
+Victor Cionca
+
+
+       
+____________________________________________________________________________________Be a better Globetrotter. Get better travel answers from someone who knows. Yahoo! Answers - Check it out.
+http://answers.yahoo.com/dir/?link=list&sid=396545469
+
+

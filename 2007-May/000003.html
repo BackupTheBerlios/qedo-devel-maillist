@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Qedo-devel] QoSEnabler
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/qedo-devel/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:qedo-devel%40lists.berlios.de?Subject=Re%3A%20%5BQedo-devel%5D%20QoSEnabler&In-Reply-To=%3C545382.85944.qm%40web33614.mail.mud.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Qedo-devel] QoSEnabler</H1>
+    <B>victor cionca</B> 
+    <A HREF="mailto:qedo-devel%40lists.berlios.de?Subject=Re%3A%20%5BQedo-devel%5D%20QoSEnabler&In-Reply-To=%3C545382.85944.qm%40web33614.mail.mud.yahoo.com%3E"
+       TITLE="[Qedo-devel] QoSEnabler">victor_cionca at yahoo.com
+       </A><BR>
+    <I>Fri May 11 12:16:38 CEST 2007</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3">[ date ]</a>
+              <a href="thread.html#3">[ thread ]</a>
+              <a href="subject.html#3">[ subject ]</a>
+              <a href="author.html#3">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello!
+
+I would like to use the QoSEnabler as a monitor in the
+container. To monitor outside events and communicate
+with the other components via QoSUsage or callbacks.
+
+The QoSEnabler supports a &quot;getSystemLoad&quot; interface. 
+
+This is how I install the enabler as a service:
+context_-&gt;install_service_reference(&quot;QoSMonitor&quot;,
+component_);
+
+And this is how I call it from the component:
+ - I include QoSEnabler_component_EQUIVALENT.h and do:
+
+CORBA::Object_var qosmonitor =
+context_-&gt;resolve_service_reference(&quot;QoSMonitor&quot;);
+			QoSEnabler::SystemLoadMonitor_var monitor =
+QoSEnabler::SystemLoadMonitor::_narrow(qosmonitor);
+
+double system_load = monitor-&gt;getSystemLoad();
+
+
+It compiles ok but the method call from the component
+fails somehow...
+
+Also, I would like to know I could use the callback
+way to interact with the component from the
+QoSEnabler.
+
+Thank you!
+
+Victor Cionca
+
+
+       
+____________________________________________________________________________________Be a better Globetrotter. Get better travel answers from someone who knows. Yahoo! Answers - Check it out.
+<A HREF="http://answers.yahoo.com/dir/?link=list&amp;sid=396545469">http://answers.yahoo.com/dir/?link=list&amp;sid=396545469</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#3">[ date ]</a>
+              <a href="thread.html#3">[ thread ]</a>
+              <a href="subject.html#3">[ subject ]</a>
+              <a href="author.html#3">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/qedo-devel">More information about the Qedo-devel
+mailing list</a><br>
+</body></html>
